@@ -1,0 +1,296 @@
+:root {
+  font-family:
+    "Microsoft YaHei", "PingFang SC", "Noto Sans SC", sans-serif;
+  color: #25352f;
+  background: #f4f1e8;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+
+  --ink: #173c36;
+  --ink-light: #32635a;
+  --vermilion: #a93f34;
+  --gold: #c59a4a;
+  --paper: #f8f5ec;
+  --paper-deep: #ece5d5;
+  --line: rgba(32, 68, 59, 0.14);
+  --shadow: 0 12px 35px rgba(29, 54, 47, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 1180px;
+  min-height: 100%;
+  background: #f4f1e8;
+}
+
+body {
+  min-width: 880px;
+  min-height: 80vh;
+  margin: 0;
+  /* 全局大背景：故宫淡彩画，固定不随滚动 */
+  background: url("./assets/app-bg.jpg") center / cover no-repeat fixed #f3ead8;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.topbar {
+  position: sticky;
+  z-index: 100;
+  top: 0;
+  display: grid;
+  grid-template-columns: 330px 1fr 190px;
+  align-items: center;
+  min-height: 82px;
+  padding: 0 38px;
+  border-bottom: 1px solid rgba(197, 154, 74, 0.26);
+  background: rgba(248, 245, 236, 0.94);
+  box-shadow: 0 8px 28px rgba(27, 52, 46, 0.07);
+  backdrop-filter: blur(18px);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.brand-mark {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border: 1px solid rgba(197, 154, 74, 0.65);
+  border-radius: 50% 50% 45% 45%;
+  color: #f6e4b7;
+  background:
+    linear-gradient(145deg, #28594f, #123a34);
+  box-shadow:
+    inset 0 0 0 4px rgba(255, 255, 255, 0.08),
+    0 8px 18px rgba(24, 62, 54, 0.18);
+}
+
+.brand h1 {
+  margin: 0;
+  color: var(--ink);
+  font-family: "STKaiti", "KaiTi", serif;
+  font-size: 23px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.brand p {
+  margin: 3px 0 0;
+  color: #7a877f;
+  font-family: Georgia, serif;
+  font-size: 9px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 13px;
+  border-radius: 8px;
+  color: #5a6b64;
+  font-size: 14px;
+  transition: 0.25s ease;
+}
+
+.nav-item:hover {
+  color: var(--ink);
+  background: rgba(23, 60, 54, 0.06);
+}
+
+.nav-item.router-link-active {
+  color: #fff;
+  background: linear-gradient(135deg, #1d5047, #2e695e);
+  box-shadow: 0 7px 18px rgba(23, 60, 54, 0.2);
+}
+
+.nav-item.router-link-active::after {
+  position: absolute;
+  bottom: -13px;
+  left: 50%;
+  width: 18px;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--gold);
+  content: "";
+  transform: translateX(-50%);
+}
+
+.system-status {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 7px;
+  color: #3e665e;
+  font-size: 12px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #46a66e;
+  box-shadow: 0 0 0 4px rgba(70, 166, 110, 0.13);
+}
+
+.system-status.offline {
+  color: #9a514b;
+}
+
+.system-status.offline .status-dot {
+  background: #b85048;
+  box-shadow: 0 0 0 4px rgba(184, 80, 72, 0.13);
+}
+
+.main-content {
+  width: 100%;
+  max-width: 1560px;
+  flex: 1;
+  margin: 0 auto;
+  padding: 28px 38px 38px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 42px;
+  border-top: 1px solid var(--line);
+  color: #718078;
+  background: rgba(247, 244, 235, 0.8);
+  font-size: 12px;
+}
+
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-5px);
+}
+
+.panel {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: rgba(255, 253, 247, 0.9);
+  box-shadow: var(--shadow);
+}
+
+.primary-button {
+  border: 0;
+  border-radius: 9px;
+  padding: 11px 20px;
+  color: white;
+  background: linear-gradient(135deg, #a74438, #8e3028);
+  box-shadow: 0 8px 18px rgba(151, 53, 45, 0.2);
+}
+
+.secondary-button {
+  border: 1px solid rgba(23, 60, 54, 0.22);
+  border-radius: 9px;
+  padding: 10px 18px;
+  color: var(--ink);
+  background: #fffdf8;
+}
+
+.page-title {
+  margin-bottom: 22px;
+}
+
+.page-title h2 {
+  margin: 0;
+  color: var(--ink);
+  font-family: "STKaiti", "KaiTi", serif;
+  font-size: 30px;
+  letter-spacing: 2px;
+}
+
+.page-title p {
+  margin: 7px 0 0;
+  color: #75847d;
+  font-size: 14px;
+}
+
+/* 页面整体背景 */
+html,
+body,
+#app {
+  min-height: 100%;
+}
+
+body {
+  position: relative;
+}
+
+/* 页面实际内容位于背景图案上方 */
+#app {
+  position: relative;
+  z-index: 1;
+}
+
+/* 增加非常淡的宣纸纹理 */
+#app::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(116, 83, 48, 0.018) 0,
+      rgba(116, 83, 48, 0.018) 1px,
+      transparent 1px,
+      transparent 6px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(116, 83, 48, 0.012) 0,
+      rgba(116, 83, 48, 0.012) 1px,
+      transparent 1px,
+      transparent 8px
+    );
+}
